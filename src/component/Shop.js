@@ -9,7 +9,7 @@ function Shop(props) {
 
     let history = useHistory();
     const handleClick = () => {
-       if(localStorage.getItem('token')){
+        if(localStorage.getItem('token')){
         history.push(`/products/${props.shop.title}`)}
         else{
             history.push(`/login`)
