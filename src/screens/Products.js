@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
     useParams
 } from "react-router-dom";
- 
+
 function Products(props) {
 
     const dispatch = useDispatch()
@@ -24,7 +24,7 @@ function Products(props) {
 
     let { loading, error, products } = productList;
 
-     const filterItem = (cate) => {
+    const filterItem = (cate) => {
         if (cate !== '') {
             setCategory(cate)
         }
@@ -32,7 +32,6 @@ function Products(props) {
             setCategory("All Product")
         }
         dispatch(FilterProductList(cate, shopName))
-
     }
 
 
@@ -51,18 +50,37 @@ function Products(props) {
                                 <button class="btn  my-2 my-sm-0 searchBtn"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
-                        <div class="col-sm categoryButtonsDiv text-center">
-                        <div style={{ display: "inline" }}>
+                        <div className="col-sm ">
+                            {/* <div className="wrapper"> */}
+                            <div className='wrapper'>
+                            <div className="item"><button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('')}>All</button></div>
+                                <div className="item"> <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Rum')}>Rum</button></div>
+                                <div className="item"> <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Beer')}>Beer</button></div>
+                                <div className="item"> <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('')}>All</button></div>
+                                <div className="item"> <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Beer')}>Beer</button></div>
+                                <div className="item">  <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Rum')}>Rum</button></div>
+                            </div>
+                                
+                            {/* </div> */}
+                        </div>
+                        {/* <div class="col-sm categoryButtonsDiv text-center">
+                        <div>
                     <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('')}>All</button>
                     <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Rum')}>Rum</button>
                     <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Beer')}>Beer</button>
+                    <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('')}>All</button>
+                    <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Rum')}>Rum</button>
+                    <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Beer')}>Beer</button>
+                    <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('')}>All</button>
+                    <button className="categoryButton btn btn-outline-dark" onClick={() => filterItem('Rum')}>Rum</button>
+                    
                 </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 
                 {/* </form> */}
-           
+
                 <hr className="allProductsMargin text-center" />
                 <h1 className="allProductWithCategoryHeading">
                     {category}s
@@ -86,6 +104,7 @@ function Products(props) {
                     }
                 </div>
             </div>
+
         </>
     )
 }

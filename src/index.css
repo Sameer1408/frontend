@@ -301,6 +301,12 @@ color: rgb(0, 101, 112);
   bottom: 20px;
 }
 
+.categoryButtonsDiv{
+  border: 1px solid transparent;
+  display: flex;
+  overflow-x: auto;
+  height: 40px;
+}
 
 .largeImage_product{
   border:2px solid transparent;
@@ -569,7 +575,7 @@ margin-left:150px;
 
 .categoryButton{
   margin:0px 10px;
-  width:70px;
+  min-width:70px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.219);
   background-color:#fff;
   color:#b43737;
@@ -815,7 +821,7 @@ color: rgb(0, 101, 112);
 .categoryButtonsDiv{
   margin:auto;
   position: relative;
-
+  
 }
 .allProductsMargin{
   width: 90%;
@@ -1048,4 +1054,23 @@ color: rgb(0, 101, 112);
   color: cadetblue;
   font-size: 18px;
 }
+}
+/* Just testing  */
+.wrapper{
+  max-height: 120px;
+  display: flex;
+  overflow-x: auto;
+  /* border: 2px solid; */
+  width:600px;
+}
+.wrapper::-webkit-scrollbar{
+  
+}
+
+.wrapper .item{
+  min-width: 110px;
+  height:40px;
+  text-align: center;
+  /* background-color: #ddd; */
+  
 }

@@ -125,6 +125,8 @@ function Checkout() {
     const json = await response.json();
     console.log(json)
     history.push('/profile')
+    localStorage.removeItem('cartItems')
+    window.location.reload();
   }
 
 
