@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-
+import loading from '../images/loading2.gif'
 import Product from '../component/Product';
 import { ListProducts, FilterProductList } from '../actions/productActions'
 import { useSelector, useDispatch } from 'react-redux'
@@ -24,6 +24,8 @@ function Products(props) {
 
     let { loading, error, products } = productList;
 
+  
+
     const filterItem = (cate) => {
         if (cate !== '') {
             setCategory(cate)
@@ -39,8 +41,12 @@ function Products(props) {
     return (
         <>
             <div className="my-5" style={{ position: "relative", top: "40px" }}>
-
-                {/* <input type="search" className="search mr-sm-2" placeholder="search here" onChange={e => { setSearchTerm(e.target.value) }} /> */}
+        {
+            loading?
+            <img src={loading}></img>
+            :
+            <>
+               {/* <input type="search" className="search mr-sm-2" placeholder="search here" onChange={e => { setSearchTerm(e.target.value) }} /> */}
                 {/* <form class="form-inline my-2 my-lg-0"> */}
                 <div class="container features">
                     <div class="row">
@@ -103,6 +109,10 @@ function Products(props) {
                         })
                     }
                 </div>
+            </>
+        }
+
+             
             </div>
 
         </>

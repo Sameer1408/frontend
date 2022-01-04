@@ -352,6 +352,15 @@ color: rgb(0, 101, 112);
   top: 20px;
 }
 
+.popDivCart{
+  position: fixed;
+  top: 75px;
+  width: 100%;
+  z-index: 2;
+  border: 1px solid;
+
+}
+
 .addToCartBtn{
   position: relative;
   top: 40px;

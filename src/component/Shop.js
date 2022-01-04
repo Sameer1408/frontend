@@ -7,10 +7,14 @@ import { useHistory } from 'react-router';
 
 function Shop(props) {
 
+
+   
     let history = useHistory();
     const handleClick = () => {
         if(localStorage.getItem('token')){
-        history.push(`/products/${props.shop.title}`)}
+        history.push(`/products/${props.shop.title}`)
+        localStorage.setItem('currentShop',props.shop.title)
+    }
         else{
             history.push(`/login`)
         }

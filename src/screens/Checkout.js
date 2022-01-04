@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CheckoutCartItems from '../component/CheckoutCartItems';
 import { useHistory } from 'react-router';
 
+
 function Checkout() {
 
   const history = useHistory();
@@ -95,6 +96,7 @@ function Checkout() {
       firstName,
       lastName
     }
+   let shop = cartItems[0].shop
     let shippingInfo = {
       address,
       city,
@@ -107,7 +109,7 @@ function Checkout() {
     }
     let totalAmount = cartItems.reduce((acc, item) => acc + (Number(item.quantity) * Number(item.price)), 0)
 
-    const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/cart/order`, {
+    const response = await fetch(`http://localhost:4000/api/cart/order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -115,6 +117,7 @@ function Checkout() {
       },
       body: JSON.stringify({
         name,
+        shop,
         email,
         shippingInfo,
         orderItems,
@@ -126,8 +129,10 @@ function Checkout() {
     console.log(json)
     history.push('/profile')
     localStorage.removeItem('cartItems')
-    window.location.reload();
+       window.location.reload();
   }
+
+  
 
 
   return (

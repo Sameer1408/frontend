@@ -77,7 +77,7 @@ function Navbar(props) {
         <ul class="navbar-nav mr-auto">
           {localStorage.getItem('hasInputedTheAge') ? <>
             <li class="nav-item active">
-              <Link class="nav-link homeLink" to="/home">Home <span class="sr-only">(current)</span></Link>
+              <Link class="nav-link homeLink" to="/home">Shops <span class="sr-only">(current)</span></Link>
             </li>
             {localStorage.getItem('token')
               ?

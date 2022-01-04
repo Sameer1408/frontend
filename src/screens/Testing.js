@@ -4,25 +4,55 @@ import shopContext from '../context/shops/shopContext';
 import {
   useParams
 } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import Reviews from '../component/Reviews'
+import Ask from '../component/Ask'
 function Testing(props) {
   const history = useHistory();
   let id = useParams().id;
+   const [product, setproduct] = useState({})
   const [qty, setQty] = useState(1)
 
   const [selectedPrice, setSelectedPrice] = useState('')
+  const cart = useSelector(state => state.cart)
+  const { cartItems } = cart;
+ 
+  const [pop, setpop] = useState("none")
+
+
+  let productsShop = product.shop
 
   const addToCartHandler = () => {
-    const cartItems = {
-      product: id,
-      quantity: qty,
-      price: product.price
+    // const cartItems = {
+    //   product: id,
+    //   quantity: qty,
+    //   price: product.price
+    // }
+    
+    if(cartItems.length==0)
+    {
+      if(selectedPrice!==''){
+        history.push(`/${id}/${qty}/${selectedPrice}`)}
+        else{
+          props.showAlret('Please Select Size of bottle','warning')
+        }
     }
-    if(selectedPrice!==''){
-    history.push(`/${id}/${qty}/${selectedPrice}`)}
     else{
-      props.showAlret('Please Select Size of bottle','warning')
+      let currentShop = cartItems[0].shop
+      if(currentShop==productsShop)
+      {
+
+        if(selectedPrice!==''){
+          history.push(`/${id}/${qty}/${selectedPrice}`)}
+          else{
+            props.showAlret('Please Select Size of bottle','warning')
+          }
+      }
+      else{
+       setpop("block")
+      }
     }
+  
   }
 
   const addQuantity = (e) => {
@@ -35,7 +65,7 @@ function Testing(props) {
     setQty(sub)
   }
 
-  const [product, setproduct] = useState({})
+
   const [loading, setLoading] = useState(true)
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('')
@@ -60,6 +90,15 @@ function Testing(props) {
     setLoading(false)
   }
 
+  const onClickYes=()=>{
+    localStorage.removeItem('cartItems')
+    history.push(`/${id}/${qty}/${selectedPrice}`)
+    window.location.reload();
+  }
+
+  const onClickNo=()=>{
+    setpop("none")
+  }
 
   const handleReviewClick = async () => {
     // console.log(rating)
@@ -88,6 +127,7 @@ function Testing(props) {
   let pricetick=(p)=>{
     setSelectedPrice(p)
   }
+
 
 
 
@@ -184,6 +224,17 @@ function Testing(props) {
           </div>
         </>
       }
+      {cartItems.length==0?null:
+      <>
+      <div className="popDivCart" style={{ display: `${pop}` }}>
+      <p>Relpace items already in cart</p>
+      <p>Your cart contains drinks from {cartItems[0].shop} Shop.Do you want to discard the secetion and add drinks from {productsShop} Shop </p>
+      <button onClick={onClickYes}>yes</button>
+      <button onClick={onClickNo}>no</button>
+      </div>
+      </>
+      }
+     
     </div>
   )
 }

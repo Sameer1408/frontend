@@ -29,11 +29,12 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import NavLinks from './component/NavLinks';
 import TestingPayment from './component/TestingPayment';
+import AdminPage from './screens/AdminPage';
+import OdersShop from './component/OdersShop';
 
 
 function App() {
   const [alert, setAlert] = useState(null)
-
   const showAlret = (message, type) => {
     setAlert({
       msg: message,
@@ -44,45 +45,54 @@ function App() {
     }, 1500)
   }
 
+
+
+
   return (
     <>
       <ShopState>
         <Router>
-           <Navbar /> 
+          <Navbar />
           <Alert alert={alert} />
           <Switch>
             <Route exact path="/">
               <UnderOrAboveAge showAlret={showAlret} />
             </Route>
             <Route exact path="/home">
-            <Home/>
+              <Home />
+            </Route>
+            <Route exact path="/ordersshopchunabhatti">
+              <OdersShop />
+            </Route>
+            <Route exact path="/admin">
+              <AdminPage />
             </Route>
             <Route exact path="/testingpayment">
-            <TestingPayment/>
+              <TestingPayment />
             </Route>
             <Route exact path="/navLinks">
-            <NavLinks/>
+              <NavLinks />
             </Route>
             <Route exact path="/profile">
-            <Profile/>
-            </Route> 
+              <Profile />
+            </Route>
             <Route exact path="/checkout">
               <Checkout />
             </Route>
             <Route exact path="/shipping">
-              <ShippingScreen/>  
+              <ShippingScreen />
             </Route>
             <Route exact path="/payment">
-              <PaymentScreen/>
+              <PaymentScreen />
             </Route>
             <Route exact path="/placeorder">
-              <PlaceOrderScreen/>
+              <PlaceOrderScreen />
             </Route>
             <Route exact path="/checkOutStep">
-              <CheckOutSteps/>
+              <CheckOutSteps />
             </Route>
             <Route exact path="/createShop">
-              <CreateShop/>
+              <CreateShop />
             </Route>
             <Route exact path="/uploadproduct">
               <UploadProduct />
@@ -105,7 +115,6 @@ function App() {
             <Route exact path="/checkout">
               <SignUp />
             </Route>
-          
           </Switch>
           <Footer />
         </Router>

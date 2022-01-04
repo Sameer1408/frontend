@@ -19,18 +19,17 @@ function Cart() {
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart;
 
-    // console.log(cartItems)
-
     useEffect(() => {
         if (id) {
             dispatch(addToCart(id, qty, price, shop))
         }
+        
     }, [dispatch, id, qty, price]);
 
     const history = useHistory();
 
     const handleContinueShopingClick = () => {
-        history.push('/home')
+        history.push(`/products/${localStorage.getItem('currentShop')}`)
     }
 
     const handleCheckoutClick = () => {
