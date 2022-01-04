@@ -109,7 +109,7 @@ function Checkout() {
     }
     let totalAmount = cartItems.reduce((acc, item) => acc + (Number(item.quantity) * Number(item.price)), 0)
 
-    const response = await fetch(`http://localhost:4000/api/cart/order`, {
+    const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/cart/order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

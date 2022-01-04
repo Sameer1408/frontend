@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import io from 'socket.io-client'
-const socket = io.connect('http://localhost:4000')
+const socket = io.connect('https://salty-inlet-39033.herokuapp.com')
 
 function AdminAllOrder(props) {
  
@@ -19,7 +19,7 @@ function AdminAllOrder(props) {
 
   const updateStatus = async (state) => {
     const orderId = props.order._id
-    const response = await fetch(`http://localhost:4000/api/auth/admin/orderStatus`, {
+    const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/auth/admin/orderStatus`, {
       method: 'POST',
 
       headers: {

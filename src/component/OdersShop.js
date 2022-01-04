@@ -5,7 +5,7 @@ import {Howl, Howler} from 'howler';
 import io from 'socket.io-client'
 import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-const socket = io.connect('http://localhost:4000')
+const socket = io.connect('https://salty-inlet-39033.herokuapp.com')
 socket.on('connect', () => {
     console.log(`I'm connected with the back-end`);
 });
@@ -46,7 +46,7 @@ function OdersShop() {
     }
 
     const  getAllOrders = async()=>{
-        const response = await fetch(`http://localhost:4000/api/auth/admin/allorders/ChunaBhatti`, {
+        const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/auth/admin/allorders/ChunaBhatti`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',

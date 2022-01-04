@@ -6,7 +6,7 @@ import io from 'socket.io-client'
 
 
 import 'react-toastify/dist/ReactToastify.css'
-const socket = io.connect('http://localhost:4000')
+const socket = io.connect('https://salty-inlet-39033.herokuapp.com')
 
 socket.on('connect', () => {
     console.log(`I'm connected with the back-end`);
