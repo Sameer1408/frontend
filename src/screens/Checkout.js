@@ -28,6 +28,7 @@ function Checkout() {
    const [razorpaySignature,setRazorpaySignature] = useState('');
 
   const handleSubmit = async () => {
+       if(address!='' && city!='' && phoneNo!='' ){
     const amount = cartItems.reduce((acc, item) => acc + (Number(item.quantity) * Number(item.price)), 0)
     const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/cart/order/${amount}`, {
       method: 'GET',
@@ -90,7 +91,7 @@ function Checkout() {
           alert(response.error.metadata.payment_id);
 
   });
- 
+       }
   }
 
   const saveOrder=async()=>{
