@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutCartItems from '../component/CheckoutCartItems';
 import { useHistory } from 'react-router';
 
 
 function Checkout() {
-
+  useEffect(() => {
+       window.scrollTo(0, 0)
+    }, [])
   const history = useHistory();
 
   const cart = useSelector(state => state.cart)
