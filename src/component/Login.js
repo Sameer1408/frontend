@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
-export default function Login() {
+export default function Login(props) {
 let history =  useHistory();
 const [cred, setcred] = useState({email:"",password:""})
 
@@ -28,9 +28,12 @@ const handleSubmit=async(e)=>{
       if(json.success){
           localStorage.setItem('token',json.authtoken)
           history.push('/home')
+          window.location.reload();
+      }
+      else{
+        props.showAlret(json.error,'warning')
       }
       console.log(json)
-      window.location.reload();
 }
 let onChange=(e)=>{
     setcred({...cred,[e.target.name]:e.target.value})

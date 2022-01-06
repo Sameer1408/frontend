@@ -11,8 +11,7 @@ socket.on('connect', () => {
 });
 toast.configure()
 
-function OdersShop() {
-    
+function OrdersShopManisha() {
     const playSound = (src)=>{
         var sound = new Howl({
           src,
@@ -38,7 +37,7 @@ function OdersShop() {
        allOrders.push(data)
        console.log(data)
        getAllOrders();
-       if(data.shop=='ChunaBhatti')
+       if(data.shop=='Manisha')
        {
            toast(`New Order Placed`)
             playSound(sound)
@@ -46,7 +45,7 @@ function OdersShop() {
     }
 
     const  getAllOrders = async()=>{
-        const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/auth/admin/allorders/ChunaBhatti`, {
+        const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/auth/admin/allorders/Manisha`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -62,27 +61,28 @@ function OdersShop() {
 
     return (
         <div style={{position:"relative",top:"80px"}}>
-        <h1>ChunaBhatti Shop</h1>
-             {loading?<h1>loading.. .</h1>:
-            <>
-        
+         <h1>Manisha Shop</h1>
+        {loading?<h1>loading.. .</h1>:
+       <>
+   
+        {
+             allOrders.filter((e)=>{
+             if(e.shop=='Manisha')
              {
-                  allOrders.filter((e)=>{
-                  if(e.shop=='ChunaBhatti')
-                  {
-                      return e
-                  }
-                  }).slice(0).reverse().map((order)=>{
-                      return <>
-                       <AdminAllOrder order={order}/>
-                      </>
-                  })
-               } 
-                
-            </>
-            }
-            
-        </div>
+                 return e
+             }
+             }).slice(0).reverse().map((order)=>{
+                 return <>
+                  <AdminAllOrder order={order}/>
+                 </>
+             })
+          } 
+           
+       </>
+       }
+       
+   </div>
     )
 }
-export default OdersShop
+
+export default OrdersShopManisha

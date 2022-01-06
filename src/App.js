@@ -31,6 +31,8 @@ import NavLinks from './component/NavLinks';
 import TestingPayment from './component/TestingPayment';
 import AdminPage from './screens/AdminPage';
 import OdersShop from './component/OdersShop';
+import OrderStatus from './component/OrderStatus';
+import OrdersShopManisha from './component/OrdersShopManisha';
 
 
 function App() {
@@ -61,8 +63,14 @@ function App() {
             <Route exact path="/home">
               <Home />
             </Route>
+            <Route exact path="/orderStatus/:status">
+              <OrderStatus />
+            </Route>
             <Route exact path="/ordersshopchunabhatti">
               <OdersShop />
+            </Route>
+            <Route exact path="/ordersshopmanisha">
+              <OrdersShopManisha />
             </Route>
             <Route exact path="/admin">
               <AdminPage />
@@ -77,7 +85,7 @@ function App() {
               <Profile />
             </Route>
             <Route exact path="/checkout">
-              <Checkout />
+              <Checkout showAlret={showAlret} />
             </Route>
             <Route exact path="/shipping">
               <ShippingScreen />
@@ -101,7 +109,7 @@ function App() {
               <SignUp />
             </Route>
             <Route exact path="/login">
-              <Login />
+              <Login showAlret={showAlret} />
             </Route>
             <Route exact path="/:id/:qty/:price">
               <Cart />

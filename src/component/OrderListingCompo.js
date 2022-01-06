@@ -5,6 +5,7 @@ import {toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import sound from '../audio/sound.mp3'
 import {Howl, Howler} from 'howler';
+import { useHistory } from 'react-router';
 const socket = io.connect('https://salty-inlet-39033.herokuapp.com')
 socket.on('connect', () => {
     console.log(`I'm connected with the back-end`);
@@ -13,7 +14,7 @@ socket.on('connect', () => {
 toast.configure()
 
 function OrderListingCompo(props) {
-    
+    let history =  useHistory();
     const playSound = (src)=>{
         var sound = new Howl({
           src,
@@ -43,18 +44,28 @@ function OrderListingCompo(props) {
         playSound(sound)
     }
 
+    const getOrderStatus=()=>{
+        history.push(`/orderStatus/${currentStatus}`)
+    }
 
     return (
-        <div style={{border:"2px solid black",margin:"20px 0px"}}>
-        Odered On  : {date}
+        <>
+        <div className="myOdersListDiv" >
+       <p className="ordredOn">Odered On  : {date}</p>
         {
             cartItems.map((e)=>{
             return <InsideOrderListing order={e} />
             })
         }
-        Total Amount : Rs{totalAmount}
-         {currentStatus}
+        <p className="myOdersListDivAmount">
+        Total Amount : Rs {totalAmount}
+        </p>
+        {
+            currentStatus!="Complete"?<button className="btn btn-outline-dark orderStatusBtn btn-full" onClick={getOrderStatus}>Order Status</button>:'Complete'
+        }
         </div>
+       
+        </>
     )
 }
 export default OrderListingCompo

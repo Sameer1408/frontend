@@ -23,7 +23,7 @@ function Cart() {
         if (id) {
             dispatch(addToCart(id, qty, price, shop))
         }
-        
+        window.scrollTo(0, 0)
     }, [dispatch, id, qty, price]);
 
     const history = useHistory();

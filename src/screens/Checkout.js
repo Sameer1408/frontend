@@ -1,25 +1,45 @@
-import React, { useState,useEffect} from 'react'
+import React, { useState ,useLayoutEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutCartItems from '../component/CheckoutCartItems';
 import { useHistory } from 'react-router';
 
 
-function Checkout() {
-  useEffect(() => {
-       window.scrollTo(0, 0)
-    }, [])
+function Checkout(props) {
+  
+  useLayoutEffect(() => {
+    getUser();
+    window.scrollTo(0, 0)
+  }, []);
+
+  const [person, setPerson] = useState({})
+  const getUser = async () => {
+    if (localStorage.getItem('token')) {
+      const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/auth/getuser`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'auth-token': localStorage.getItem('token')
+        },
+      });
+      const json = await response.json()
+      setPerson(json.user);
+      console.log(json.user)
+    }
+  }
+  
   const history = useHistory();
 
   const cart = useSelector(state => state.cart)
   const { cartItems } = cart;
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [pinCode, setPinCode] = useState("");
+  // const [state, setState] = useState("");
+  // const [pinCode, setPinCode] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
+
   const [loading, setLoading] = useState("");
 
   //Variables for Payment Confirmation
@@ -28,7 +48,7 @@ function Checkout() {
    const [razorpaySignature,setRazorpaySignature] = useState('');
 
   const handleSubmit = async () => {
-       if(address!='' && city!='' && phoneNo!='' ){
+    if(address!='' && city!='' && phoneNo!='' ){
     const amount = cartItems.reduce((acc, item) => acc + (Number(item.quantity) * Number(item.price)), 0)
     const response = await fetch(`https://salty-inlet-39033.herokuapp.com/api/cart/order/${amount}`, {
       method: 'GET',
@@ -90,21 +110,25 @@ function Checkout() {
           alert(response.error.metadata.order_id);
           alert(response.error.metadata.payment_id);
 
-  });
-       }
+  });}
+  else{
+    props.showAlret('please fill the all fields','warning')
+  }
+ 
   }
 
   const saveOrder=async()=>{
  let name = {
-      firstName,
-      lastName
+      firstName:person.name,
+      lastName:"LastName"
     }
-   let shop = cartItems[0].shop
+    let email = person.email;
+    let shop = cartItems[0].shop
     let shippingInfo = {
       address,
       city,
-      state,
-      pinCode,
+      state:"Mp",
+      pinCode:123456,
       phoneNo,
     }
     let orderItems = {
@@ -135,18 +159,16 @@ function Checkout() {
        window.location.reload();
   }
 
-  
-
-
   return (
     <div className="container" style={{ position: 'relative', top: '90px', marginBottom: "20px" }}>
-      <h1>Checkout</h1>
+      <h1 className="checkoutHeading">Checkout</h1>
+      <hr style={{marginTop:'-2px'}}/>
       <div className="my-5" >
         <div className="row">
-          <div className="col-lg-8" style={{ border: "1px solid grey" }}>
-            <h4>Billing address</h4>
+          <div className="col-lg-8 BillingAddress">
+            <h4>Billing address </h4>
             <form class="needs-validation" novalidate>
-              <div class="row">
+              {/* <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="firstName">First name</label>
                   <input type="text" class="form-control" id="firstName" placeholder="First Name" value={firstName} onChange={(e) => { setFirstName(e.target.value) }} required />
@@ -161,18 +183,18 @@ function Checkout() {
                     Valid last name is required.
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div class="mb-3">
+              {/* <div class="mb-3">
                 <label for="email">Email </label>
                 <input type="email" class="form-control" id="email" value={email} placeholder="you@example.com" onChange={(e) => { setEmail(e.target.value) }} required />
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
-              </div>
+              </div> */}
 
               <div class="mb-3">
-                <label for="address">Address</label>
+                <label for="address">Address <i class="fas fa-map-marker-alt"></i></label>
                 <input type="text" class="form-control" id="address" value={address} onChange={(e) => { setAddress(e.target.value) }} placeholder="1234 Main St" required />
                 <div class="invalid-feedback">
                   Please enter your shipping address.
@@ -180,41 +202,42 @@ function Checkout() {
               </div>
 
               <div class="mb-3">
-                <label for="phoneNumber">Phone Number</label>
+                <label for="phoneNumber">Phone Number <i class="fas fa-phone"></i></label>
                 <input type="number" class="form-control" id="phoneNumber" value={phoneNo} onChange={(e) => { setPhoneNo(e.target.value) }} placeholder="Phone Number" required />
               </div>
 
               <div class="row">
-                <div class="col-md-6 mb-3">
+                {/* <div class="col-md-6 mb-3">
                   <label for="state">State</label>
                   <input type="text" class="form-control" id="state" placeholder="State" value={state} onChange={(e) => { setState(e.target.value) }} required />
                   <div class="invalid-feedback">
                     Valid  State is required.
                   </div>
-                </div>
+                </div> */}
                 <div class="col-md-6 mb-3">
-                  <label for="city">City</label>
+                  <label for="city">City <i class="fas fa-globe"></i></label>
                   <input type="text" class="form-control" id="city" placeholder="City" value={city} onChange={(e) => { setCity(e.target.value) }} required />
                   <div class="invalid-feedback">
                     Valid  City is required.
                   </div>
                 </div>
-                <div class="col-md-3 mb-3">
+                {/* <div class="col-md-3 mb-3">
                   <label for="zip">Pincode</label>
                   <input type="text" class="form-control" id="pincode" value={pinCode} onChange={(e) => { setPinCode(e.target.value) }} placeholder="" required />
                   <div class="invalid-feedback">
                     Zip code required.
                   </div>
-                </div>
+                </div> */}
               </div>
-
-            </form>
+          </form>
           </div>
-          <div className="col-lg-4" style={{ border: "1px solid grey" }}>
+          
+          <div className="col-lg-4 checkoutShowProducts" >
+           <hr/>
             <h4 style={{ color: "grey", display: "inline-block" }}>Cart Items</h4>
             <button className="btn btn-dark" style={{ display: "inline-block", float: "right" }}>{cartItems.reduce((acc, item) => acc + Number(item.quantity), 0)}</button>
 
-            <div style={{ height: "50vh", overflowY: "auto", width: "100" }}>
+            <div className="CheckoutCartItems" >
               {
                 cartItems.map((e) => {
                   return <CheckoutCartItems item={e} />

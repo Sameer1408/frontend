@@ -356,9 +356,10 @@ color: rgb(0, 101, 112);
   position: fixed;
   top: 75px;
   width: 100%;
-  z-index: 2;
-  border: 1px solid;
-
+  z-index: 500;
+  background-color: #fff3cd;
+  padding: 10px;
+  
 }
 
 .addToCartBtn{
@@ -645,6 +646,215 @@ margin-left:150px;
  position:relative;
  top:40px;
 }
+
+.myOdersListDiv{
+  border: 2px solid transparent;
+  margin: 20px 0px;
+  background-color: white;
+  padding:10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.219);
+}
+.ordredOn{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+.myOdersListProductName{
+  display: inline;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+.myOdersListProductQty{
+  display:inline;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 20px;
+  font-weight: 900;
+}
+
+.myOdersListDivAmount{
+  color: rgb(0, 101, 112);
+  font-family: 'PT Serif', serif;
+}
+
+.orderStatusBtn{
+  background-color:#fff;
+  color:#b43737;
+  border-color: #b43737;
+  width: 100%;
+
+}
+
+.ordersShopSideDiv{
+  margin: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.219);
+  padding: 10px;
+}
+
+.ordersShopSideDivStatus{
+  width:200px;
+}
+
+.ordersShopSideDivImage{
+  width:60px;
+  display:inline-block;
+}
+.ordersShopSideDivProductName{
+  display: inline-block;
+}
+.ordersShopSideDivName{
+  font-family: 'Roboto', sans-serif;
+  margin-bottom:-5px ;
+}
+.ordersShopSideDivPrice{
+  color: rgb(0, 101, 112);
+  font-family: 'PT Serif', serif;
+}
+
+.CheckoutCartProductPrice{
+  color: rgb(0, 101, 112);
+  font-family: 'PT Serif', serif;
+}
+
+.CheckoutCartProductQty{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+}
+.visa{
+  width:50px;
+  margin:0px 10px;
+}
+.masterCard{
+  width:60px;
+  margin:0px 10px;
+}
+.maestro{
+  width: 50px;
+  margin:0px 10px;
+}
+.rupay{
+  width: 75px;
+  margin:0px 10px;
+}
+.upi{
+  width: 60px;
+  margin:0px 10px;
+}
+.trackIcon{
+  font-size:30px;
+}
+.trackCircle{
+  font-size: 6px;
+}
+.trackTitle{
+  display: inline-block;
+  font-size:20px;
+}
+.trackDiv{
+  margin-left:80px;
+}
+.trackLine{
+margin-left:124px;
+}
+.trackTitle1{
+  margin-left:10px;
+}
+.trackTitle2{
+  margin-left:10px;
+}
+.trackTitle3{
+  margin-left:10px;
+}
+.trackTitle4{
+  margin-left:10px;
+}
+.trackIcon1{
+  margin-right:20px;
+}
+
+.trackIcon2{
+  margin-right:13px;
+}
+.trackIcon3{
+  position: relative;
+  right:10px;
+  margin-right:3px;
+}
+.trackIcon4{
+  position: relative;
+  right:8px;
+  margin-right: 13px;
+}
+.trackDivMain{
+  margin:40px 0px 0px 0px;
+}
+.trackHeading{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+ }
+.ReplaceHeading{
+  color: rgb(0, 101, 112);
+  font-family: 'PT Serif', serif;
+}
+
+.ReplacePara{
+  margin-top: -12px;
+  font-family: 'Roboto', sans-serif;
+}
+.plus{
+  position: absolute;
+  top: 10px;
+  right:20px;
+  font-size: 30px;
+  color: rgb(0, 101, 112);
+}
+
+.ShortcutToCart{
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  width:90%;
+  height:55%;
+  border-radius: 20px;
+}
+
+.cancelPlus{
+  position: relative;
+  left:110px;
+  font-size:20px;
+  margin-bottom: -10px;
+  top: 5px;
+}
+
+.productSizeShortCut{
+  background-color: rgb(223, 223, 223);
+  margin:14px 0px;
+  padding: 2px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.219);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media(max-width:998px){
   .nav_logo{
    position:relative;
@@ -1063,7 +1273,91 @@ color: rgb(0, 101, 112);
   color: cadetblue;
   font-size: 18px;
 }
+.orderStatusDiv{
+  width: 100%;
+  position: relative;  
+  height: 90vh;
+  margin-bottom: -40px;
+  top:80px;
 }
+.cartItems{
+  height:120px;
+}
+.cartItems_image{
+  width: 35%;
+  display: inline-block;
+}
+.cartItems_heading{
+  margin-left:120px;
+  position: relative;
+  bottom: 10px;
+}
+
+.cartItems_qty{
+  margin-left: 100px;
+}
+.cartItems_price{
+  margin-left:118px ;
+}
+
+.cartItemBtn{
+  margin-left:85%;
+}
+
+.cartItemsProductNameDiv{
+  border: 2px solid transparent;
+  position: relative;
+  bottom:140px;
+}
+.cartItemsProductQtyDiv{
+  border: 2px solid transparent;
+  position: relative;
+  bottom:160px;
+}
+.cartItemsProductPriceDiv{
+  border: 2px solid transparent;
+  position: relative;
+  bottom:172px;
+}
+.cartItemsProductButtonDiv{
+  border: 2px solid transparent;
+  position: relative;
+  bottom:250px;
+}
+.checkoutHeading{
+  font-family: 'Roboto', sans-serif;
+
+}
+.BillingAddress{
+  margin-top: -30px;
+}
+
+.checkoutShowProducts{
+  /* border: 2px solid;
+  height: auto; */
+
+}
+.CheckoutCartItems{
+  height:30vh;
+  overflow-y:auto;
+  width:100; 
+}
+.shopsPageAdvertise{
+  background-image: url('images/advertisingBackground1.jpg');
+}
+.trackHeading{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+}
+
+
+
+
 /* Just testing  */
 .wrapper{
   max-height: 120px;
@@ -1082,4 +1376,12 @@ color: rgb(0, 101, 112);
   text-align: center;
   /* background-color: #ddd; */
   
+}
+.hrCheckOut{
+  display:none;
+}
+.CheckoutCartItems{
+  height:auto;
+  overflow-y:auto;
+  width:100; 
 }
