@@ -1001,11 +1001,11 @@ margin-left:124px;
 }
 .shopsPageAdvertise_Heading{
   margin-left:20px;
-  color: white;
+  color: rgb(255, 255, 255);
   font-family: 'Dancing Script', cursive;
-  font-weight:300px;
-  font-size: 20px;
-
+  font-weight:900px;
+  font-size: 25px;
+    
 }
 .product_img{
   width:120%;
@@ -1343,7 +1343,7 @@ color: rgb(0, 101, 112);
   width:100; 
 }
 .shopsPageAdvertise{
-  background-image: url('images/advertisingBackground1.jpg');
+  background-image: url('images/advertisingBackground5.gif');
 }
 .trackHeading{
   font-family: 'Roboto', sans-serif;
@@ -1351,7 +1351,9 @@ color: rgb(0, 101, 112);
   text-align: center;
   margin-top: 10px;
 }
-
+.orderNowBtn{
+  width: 100%;
+}
 
 }
 

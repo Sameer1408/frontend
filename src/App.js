@@ -5,6 +5,8 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 
 import Home from './screens/Home';
 import UnderOrAboveAge from './component/UnderOrAboveAge';
@@ -66,6 +68,15 @@ function App() {
             <Route exact path="/orderStatus/:status">
               <OrderStatus />
             </Route>
+            {/* <Route exact path="/orderStatus/Confirmed">
+              <OrderStatus />
+            </Route>
+            <Route exact path="/orderStatus/Dispatched">
+              <OrderStatus />
+            </Route>
+            <Route exact path="/orderStatus/Confirmed">
+              <OrderStatus />
+            </Route> */}
             <Route exact path="/ordersshopchunabhatti">
               <OdersShop />
             </Route>
@@ -124,6 +135,11 @@ function App() {
               <SignUp />
             </Route>
           </Switch>
+          <MessengerCustomerChat
+            pageId="107021984625400"
+            appId="364560045336738"
+            htmlRef="<REF_STRING>"
+          />
           <Footer />
         </Router>
       </ShopState>

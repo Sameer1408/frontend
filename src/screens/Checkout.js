@@ -251,7 +251,7 @@ function Checkout(props) {
           </div>
         </div>
       </div>
-      <button className="btn btn-outline-primary" style={{ width: "50%" }} onClick={handleSubmit}>Order Now</button>
+      <button className="btn btn-outline-primary orderNowBtn"  onClick={handleSubmit}>Order Now</button>
       <div style={{ height: "80px" }}></div>
     </div>
   )
